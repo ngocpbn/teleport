@@ -23,3 +23,5 @@ sudo apt-get install teleport
 
 # STEP 2: SET UP THE .YAML CONFIGURATION FILE
 
+echo "Making the directory /etc/teleport/"
+sudo mkdir /etc/teleport/
