@@ -51,7 +51,7 @@ echo "  proxy_listener_mode: multiplex" >> $CONFIG_FILE
 echo "ssh_service:" >> $CONFIG_FILE
 echo -e "  enabled: \"yes\"" >> $CONFIG_FILE
 echo "  commands:" >> $CONFIG_FILE 
-echo "  - name: hostname" >> $CONFIG_FILE 
+echo "  - name: SCS" >> $CONFIG_FILE 
 echo "    period: 1m0s" >> $CONFIG_FILE
 echo "    command: [hostname]" >> $CONFIG_FILE 
 echo "    period: 1m0s" >> $CONFIG_FILE
@@ -59,3 +59,14 @@ echo "proxy_service:" >> $CONFIG_FILE
 echo -e "  enabled: \"yes\"" >> $CONFIG_FILE 
 echo "  https_keypairs: []" >> $CONFIG_FILE
 echo "  acme: {}" >> $CONFIG_FILE
+
+#------------------------------------
+
+# STEP 3: RUN TELEPORT AS A DAEMON
+sudo systemctl enable teleport.service
+sudo systemctl start teleport
+
+#------------------------------------
+
+# STEP 4: CONFIGURE FIREWALL
+sudo ufw allow 3022,3025,3080/tcp
