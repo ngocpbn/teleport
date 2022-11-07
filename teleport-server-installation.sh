@@ -25,3 +25,20 @@ sudo apt-get install teleport
 
 echo "Making the directory /etc/teleport/"
 sudo mkdir /etc/teleport/
+
+sudo touch /etc/teleport/teleport.yaml
+
+# The configuration file
+echo "version: v3" >> /etc/teleport/teleport.yaml
+echo "teleport:" >> /etc/teleport/teleport.yaml 
+echo "  nodename: $(hostname)" >> /etc/teleport/teleport.yaml
+echo "  data_dir: /var/lib/teleport" >> /etc/teleport/teleport.yaml
+echo "  log:" >> test.yaml 
+echo "    output: stderr" >> test.yaml
+echo "    severity: INFO" >> test.yaml 
+echo "    format:" >> test.yaml 
+echo "      output: text" >> test.yaml
+echo -e "  ca_pin: \"\"" >> test.yaml 
+echo -e "  diag_addr: \"\"" >> test.yaml 
+echo "auth_service:" >> test.yaml 
+echo -e "  enabled: \"yes\"" >> test.yaml
