@@ -1,6 +1,6 @@
 #!/bin/bash
 
-################################## TELEPORT AUTH SERVER INSTALLATION ##################################
+################################## TELEPORT NODE INSTALLATION ##################################
 
 # STEP 1: DOWNLOAD THE BINARY FILE  
 
