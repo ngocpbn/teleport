@@ -1,4 +1,4 @@
-# teleport
+# Teleport
 Shell scripts to automate Teleport installation and upgradation
 For Ubuntu servers and clients
 
