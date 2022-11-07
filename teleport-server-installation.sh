@@ -31,7 +31,7 @@ sudo touch /etc/teleport/teleport.yaml
 # The configuration file
 CONFIG_FILE=/etc/teleport/teleport.yaml
 
-echo "version: v3" >> $CONFIG_FILE
+echo "version: v3" >> $CONFIG_FILE    # You'll have to update this for each major release of Teleport
 echo "teleport:" >> $CONFIG_FILE 
 echo "  nodename: $(hostname)" >> $CONFIG_FILE
 echo "  data_dir: /var/lib/teleport" >> $CONFIG_FILE
