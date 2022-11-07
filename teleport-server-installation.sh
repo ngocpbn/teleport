@@ -29,16 +29,33 @@ sudo mkdir /etc/teleport/
 sudo touch /etc/teleport/teleport.yaml
 
 # The configuration file
-echo "version: v3" >> /etc/teleport/teleport.yaml
-echo "teleport:" >> /etc/teleport/teleport.yaml 
-echo "  nodename: $(hostname)" >> /etc/teleport/teleport.yaml
-echo "  data_dir: /var/lib/teleport" >> /etc/teleport/teleport.yaml
-echo "  log:" >> test.yaml 
-echo "    output: stderr" >> test.yaml
-echo "    severity: INFO" >> test.yaml 
-echo "    format:" >> test.yaml 
-echo "      output: text" >> test.yaml
-echo -e "  ca_pin: \"\"" >> test.yaml 
-echo -e "  diag_addr: \"\"" >> test.yaml 
-echo "auth_service:" >> test.yaml 
-echo -e "  enabled: \"yes\"" >> test.yaml
+CONFIG_FILE=/etc/teleport/teleport.yaml
+
+echo "version: v3" >> $CONFIG_FILE
+echo "teleport:" >> $CONFIG_FILE 
+echo "  nodename: $(hostname)" >> $CONFIG_FILE
+echo "  data_dir: /var/lib/teleport" >> $CONFIG_FILE
+echo "  log:" >> $CONFIG_FILE 
+echo "    output: stderr" >> $CONFIG_FILE
+echo "    severity: INFO" >> $CONFIG_FILE 
+echo "    format:" >> $CONFIG_FILE 
+echo "      output: text" >> $CONFIG_FILE
+echo -e "  ca_pin: \"\"" >> $CONFIG_FILE 
+echo -e "  diag_addr: \"\"" >> $CONFIG_FILE 
+echo "auth_service:" >> $CONFIG_FILE 
+echo -e "  enabled: \"yes\"" >> $CONFIG_FILE 
+echo "  listen_addr: 0.0.0.0:3025" >> $CONFIG_FILE
+echo "  tokens:" >> $CONFIG_FILE 
+echo -e "    - \"node:my-tok3nn\"" >> $CONFIG_FILE
+echo "  proxy_listener_mode: multiplex" >> $CONFIG_FILE
+echo "ssh_service:" >> $CONFIG_FILE
+echo -e "  enabled: \"yes\"" >> $CONFIG_FILE
+echo "  commands:" >> $CONFIG_FILE 
+echo "  - name: hostname" >> $CONFIG_FILE 
+echo "    period: 1m0s" >> $CONFIG_FILE
+echo "    command: [hostname]" >> $CONFIG_FILE 
+echo "    period: 1m0s" >> $CONFIG_FILE
+echo "proxy_service:" >> $CONFIG_FILE 
+echo -e "  enabled: \"yes\"" >> $CONFIG_FILE 
+echo "  https_keypairs: []" >> $CONFIG_FILE
+echo "  acme: {}" >> $CONFIG_FILE
