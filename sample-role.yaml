@@ -1,0 +1,45 @@
+kind: role
+metadata:
+  description: Ubuntu-test role (not root but in the sudo group)
+  name: ubuntu-test-role
+spec:
+  allow:
+    logins:
+    - ngoc
+    node_labels:
+      SCS: ubuntu-test
+    rules:
+    - resources:
+      - event
+      verbs:
+      - list
+      - read
+    - resources:
+      - session_tracker
+      verbs:
+      - list
+      - read
+    - resources:
+      - session
+      verbs:
+      - read
+      - list
+      where: contains(session.participants, user.metadata.name)
+  deny: {}
+  options:
+    cert_format: standard
+    create_host_user: false
+    desktop_clipboard: true
+    desktop_directory_sharing: true
+    enhanced_recording:
+    - command
+    - network
+    forward_agent: true
+    max_session_ttl: 30h0m0s
+    pin_source_ip: false
+    port_forwarding: true
+    record_session:
+      desktop: true
+    ssh_file_copy: true
+version: v5
+---
