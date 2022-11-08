@@ -35,6 +35,8 @@ CONFIG_FILE=/etc/teleport/teleport.yaml
 
 # You'll have to change the line "version" for each major release of Teleport
 # You'll have to change the IP address of the auth server accordingly.
+# NOTE: in version 3, the syntax for specify the IP address of the auth server 
+# is "auth_server: IP:Port", not "auth_servers" as in v2
 echo -e "version: v3
 teleport:
   nodename: $(hostname)
