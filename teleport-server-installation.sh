@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Run this script in a root shell or with the command "sudo ./teleport-node-installation.sh"
+# Run this script in a root shell or with the command "sudo ./teleport-server-installation.sh"
 
 ################################## TELEPORT AUTH SERVER INSTALLATION ##################################
 
