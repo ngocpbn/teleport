@@ -87,5 +87,5 @@ sudo systemctl start teleport
 
 #------------------------------------
 
-# STEP 4: CONFIGURE FIREWALL
+# STEP 4: BASIC FIREWALL CONFIGURATION
 sudo ufw allow 3022/tcp
