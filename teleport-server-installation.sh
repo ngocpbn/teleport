@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Run this script in a root shell or with the command "sudo ./teleport-node-installation.sh"
+
 ################################## TELEPORT AUTH SERVER INSTALLATION ##################################
 
 # STEP 1: DOWNLOAD THE BINARY FILE  
@@ -31,34 +33,33 @@ sudo touch /etc/teleport/teleport.yaml
 # The configuration file
 CONFIG_FILE=/etc/teleport/teleport.yaml
 
-echo "version: v3" >> $CONFIG_FILE    # You'll have to update this for each major release of Teleport
-echo "teleport:" >> $CONFIG_FILE 
-echo "  nodename: $(hostname)" >> $CONFIG_FILE
-echo "  data_dir: /var/lib/teleport" >> $CONFIG_FILE
-echo "  log:" >> $CONFIG_FILE 
-echo "    output: stderr" >> $CONFIG_FILE
-echo "    severity: INFO" >> $CONFIG_FILE 
-echo "    format:" >> $CONFIG_FILE 
-echo "      output: text" >> $CONFIG_FILE
-echo -e "  ca_pin: \"\"" >> $CONFIG_FILE 
-echo -e "  diag_addr: \"\"" >> $CONFIG_FILE 
-echo "auth_service:" >> $CONFIG_FILE 
-echo -e "  enabled: \"yes\"" >> $CONFIG_FILE 
-echo "  listen_addr: 0.0.0.0:3025" >> $CONFIG_FILE
-echo "  tokens:" >> $CONFIG_FILE 
-echo -e "    - \"node:my-tok3nn\"" >> $CONFIG_FILE
-echo "  proxy_listener_mode: multiplex" >> $CONFIG_FILE
-echo "ssh_service:" >> $CONFIG_FILE
-echo -e "  enabled: \"yes\"" >> $CONFIG_FILE
-echo "  commands:" >> $CONFIG_FILE 
-echo "  - name: SCS" >> $CONFIG_FILE 
-echo "    period: 1m0s" >> $CONFIG_FILE
-echo "    command: [hostname]" >> $CONFIG_FILE 
-echo "    period: 1m0s" >> $CONFIG_FILE
-echo "proxy_service:" >> $CONFIG_FILE 
-echo -e "  enabled: \"yes\"" >> $CONFIG_FILE 
-echo "  https_keypairs: []" >> $CONFIG_FILE
-echo "  acme: {}" >> $CONFIG_FILE
+echo -e "version: v3     
+teleport: 
+  nodename: $(hostname) 
+  data_dir: /var/lib/teleport 
+  log: 
+    output: stderr 
+    severity: INFO 
+    format: 
+      output: text
+  ca_pin: \"\" 
+  diag_addr: \"\" 
+auth_service: 
+  enabled: \"yes\" 
+  listen_addr: 0.0.0.0:3025
+  tokens: 
+    - \"node:my-tok3nn\"
+  proxy_listener_mode: multiplex
+ssh_service:
+  enabled: \"yes\"
+  commands: 
+  - name: SCS 
+    command: [hostname] 
+    period: 1m0s
+proxy_service: 
+  enabled: \"yes\" 
+  https_keypairs: []
+  acme: {}" >> $CONFIG_FILE
 
 #------------------------------------
 
