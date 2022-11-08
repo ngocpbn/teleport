@@ -64,6 +64,21 @@ proxy_service:
 #------------------------------------
 
 # STEP 3: RUN TELEPORT AS A DAEMON
+echo -e "[Unit]
+Description=Teleport Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+EnvironmentFile=-/etc/default/teleport
+ExecStart=/usr/local/bin/teleport start --config=/etc/teleport/teleport.yaml --pid-file=/run/teleport.pid
+ExecReload=/bin/kill -HUP \$MAINPID
+PIDFile=/run/teleport.pid
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target" >> /usr/lib/systemd/system/teleport.service
 sudo systemctl enable teleport.service
 sudo systemctl start teleport
 
