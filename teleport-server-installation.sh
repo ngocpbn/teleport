@@ -33,31 +33,31 @@ sudo touch /etc/teleport/teleport.yaml
 # The configuration file
 CONFIG_FILE=/etc/teleport/teleport.yaml
 
-echo -e "version: v3     
-teleport: 
-  nodename: $(hostname) 
-  data_dir: /var/lib/teleport 
-  log: 
-    output: stderr 
-    severity: INFO 
-    format: 
+echo -e "version: v3
+teleport:
+  nodename: $(hostname)
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
       output: text
-  ca_pin: \"\" 
-  diag_addr: \"\" 
-auth_service: 
-  enabled: \"yes\" 
+  ca_pin: \"\"
+  diag_addr: \"\"
+auth_service:
+  enabled: \"yes\"
   listen_addr: 0.0.0.0:3025
-  tokens: 
+  tokens:
     - \"node:my-tok3nn\"
   proxy_listener_mode: multiplex
 ssh_service:
   enabled: \"yes\"
-  commands: 
-  - name: SCS 
-    command: [hostname] 
+  commands:
+  - name: SCS
+    command: [hostname]
     period: 1m0s
-proxy_service: 
-  enabled: \"yes\" 
+proxy_service:
+  enabled: \"yes\"
   https_keypairs: []
   acme: {}" > $CONFIG_FILE
 
