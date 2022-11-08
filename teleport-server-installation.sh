@@ -59,7 +59,7 @@ ssh_service:
 proxy_service: 
   enabled: \"yes\" 
   https_keypairs: []
-  acme: {}" >> $CONFIG_FILE
+  acme: {}" > $CONFIG_FILE
 
 #------------------------------------
 
@@ -78,7 +78,7 @@ PIDFile=/run/teleport.pid
 LimitNOFILE=8192
 
 [Install]
-WantedBy=multi-user.target" >> /usr/lib/systemd/system/teleport.service
+WantedBy=multi-user.target" > /usr/lib/systemd/system/teleport.service
 sudo systemctl enable teleport.service
 sudo systemctl start teleport
 
