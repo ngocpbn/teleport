@@ -34,33 +34,32 @@ sudo touch /etc/teleport/teleport.yaml
 CONFIG_FILE=/etc/teleport/teleport.yaml
 
 # You'll have to change the line "version" for each major release of Teleport
-# You'll have to change the IP address accordingly.
-echo -e "version: v3     
-teleport: 
-  nodename: $(hostname) 
-  data_dir: /var/lib/teleport 
-  log: 
-    output: stderr 
-    severity: INFO 
-    format: 
+# You'll have to change the IP address of the auth server accordingly.
+echo -e "version: v3
+teleport:
+  nodename: $(hostname)
+  data_dir: /var/lib/teleport
+  log:
+    output: stderr
+    severity: INFO
+    format:
       output: text
-  ca_pin: \"\" 
-  diag_addr: \"\" 
-  auth_servers:
-  - \"192.168.50.129:3025\"
-  auth_token: \"my-tok3nn\"
-auth_service: 
-  enabled: \"no\" 
+  ca_pin: \"\"
+  diag_addr: \"\"
+  auth_server: 192.168.50.129:3025
+  auth_token: my-tok3nn
+auth_service:
+  enabled: \"no\"
   listen_addr: 0.0.0.0:3025
   proxy_listener_mode: multiplex
 ssh_service:
   enabled: \"yes\"
-  commands: 
-  - name: SCS 
-    command: [hostname] 
+  commands:
+  - name: SCS
+    command: [hostname]
     period: 1m0s
-proxy_service: 
-  enabled: \"no\" 
+proxy_service:
+  enabled: \"no\"
   https_keypairs: []
   acme: {}" > $CONFIG_FILE
 
