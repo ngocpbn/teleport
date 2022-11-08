@@ -18,7 +18,7 @@ echo "deb [signed-by=/usr/share/keyrings/teleport-archive-keyring.asc] \
 | sudo tee /etc/apt/sources.list.d/teleport.list > /dev/null
 
 sudo apt-get update
-
+sudo apt-get upgrade
 sudo apt-get install teleport
 
 #------------------------------------
@@ -84,5 +84,5 @@ sudo systemctl start teleport
 
 #------------------------------------
 
-# STEP 4: CONFIGURE FIREWALL
+# STEP 4: BASIC FIREWALL CONFIGURATION
 sudo ufw allow 3022,3025,3080/tcp
